@@ -24,7 +24,7 @@ public class Graph {
 		return weights;
 	}
 	
-	public String printCustos() {
+	public String printWeights() {
 		StringBuilder content = new StringBuilder();
 		for(int i = 0; i < weights.length; i++) {
 			for(int j = 0; j < weights.length; j++) {
