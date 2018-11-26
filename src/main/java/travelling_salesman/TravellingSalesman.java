@@ -20,32 +20,32 @@ public class TravellingSalesman {
 	
 	private int[][] sortWeights(int vertex) {
 
-		int[][] aux = new int[this.weights.length][2];
+		int[][] sorted = new int[this.weights.length][2];
 		int troca;
 		
-		for (int i = 0; i < aux.length; i++) {
-			aux[i][0] = i; 							// pega o indice
-			aux[i][1] = this.weights[vertex][i];	// pega o custo
+		for (int i = 0; i < sorted.length; i++) {
+			sorted[i][0] = i; 							// pega o indice
+			sorted[i][1] = this.weights[vertex][i];		// pega o custo
 		}
 		
 		// Ordenando de forma crecente
-		for (int i = 0; i < aux.length - 1; i++) {
-			for (int j = i + 1; j < aux.length; j++) {
-				if (aux[i][1] > aux[j][1]) {
+		for (int i = 0; i < sorted.length - 1; i++) {
+			for (int j = i + 1; j < sorted.length; j++) {
+				if (sorted[i][1] > sorted[j][1]) {
 					
 					// troca custo
-					troca = aux[i][1];
-					aux[i][1] = aux[j][1];
-					aux[j][1] = troca;
+					troca = sorted[i][1];
+					sorted[i][1] = sorted[j][1];
+					sorted[j][1] = troca;
 					
 					// troca indice
-					troca = aux[i][0];
-					aux[i][0] = aux[j][0];
-					aux[j][0] = troca;
+					troca = sorted[i][0];
+					sorted[i][0] = sorted[j][0];
+					sorted[j][0] = troca;
 				}
 			}
 		}
-		return aux;
+		return sorted;
 	}
 
 	private boolean isAlreadyInRoute(int vertex) {
@@ -84,16 +84,6 @@ public class TravellingSalesman {
 		for (int i = 0; i < route.length; i++)
 			content.append(route[i]).append(", ");
 		
-		return content.toString();
-	}
-	
-	public String getVertexWeights(int vertex) {
-		StringBuilder content = new StringBuilder();
-		for(int i = 0; i < weights.length; i++) {
-			if(i != 0)
-				content.append(", ");
-			content.append(weights[vertex][i]);
-		}
 		return content.toString();
 	}
 }

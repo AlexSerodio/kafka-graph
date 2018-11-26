@@ -19,6 +19,10 @@ public class Graph {
 		{ 40, 65, 62, 97, 92, 18, 73, 57, 16, 57, 12, 10, 1, 0, 7 },
 		{ 39, 38, 83, 25, 87, 97, 15, 66, 69, 14, 9, 15, 87, 99, 0 }
 	};
+	
+	public int vertexAmount() {
+		return weights.length;
+	}
 		
 	public int[][] getWeights() {
 		return weights;
@@ -31,6 +35,16 @@ public class Graph {
 				content.append(weights[i][j]).append(", ");
 			}
 			content.append("\n");
+		}
+		return content.toString();
+	}
+	
+	public String getVertexWeights(int vertex) {
+		StringBuilder content = new StringBuilder();
+		for(int i = 0; i < weights.length; i++) {
+			if(i != 0)
+				content.append(", ");
+			content.append(weights[vertex][i]);
 		}
 		return content.toString();
 	}
