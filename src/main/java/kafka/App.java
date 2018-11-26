@@ -33,6 +33,8 @@ public final class App {
 		producer.runProducer(100);
 		consumer.runConsumer("Consumer 1");
 		
+		// consumer.clearProducer("cleaner");
+		
 		readOutputConsumer("Output 1");
 	}
 	

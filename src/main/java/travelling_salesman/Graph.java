@@ -48,4 +48,26 @@ public class Graph {
 		}
 		return content.toString();
 	}
+	
+	public String convertToString(int[] vertex) {
+		StringBuilder content = new StringBuilder();
+		for(int i = 0; i < vertex.length; i++) {
+			if(i != 0)
+				content.append(", ");
+			content.append(vertex[i]);
+		}
+		return content.toString();
+	}
+	
+	public int[] convertToArray(String vertex) {
+		String[] split = vertex.split(",");
+		
+		int[] newVertex = new int[split.length];
+		
+		for(int i = 0; i < newVertex.length; i++) {
+			newVertex[i] = Integer.parseInt(split[i].trim());
+		}
+		
+		return newVertex;
+	}
 }

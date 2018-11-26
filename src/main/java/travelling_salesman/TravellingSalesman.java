@@ -66,6 +66,9 @@ public class TravellingSalesman {
 		int currentWeight[][] = sortWeights(currentVertex);
 		int i = 0;
 		
+		if(i >= weights.length)
+			return;
+		
 		while (isAlreadyInRoute(currentWeight[i][0])) {
 			i++;
 		}

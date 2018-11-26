@@ -13,7 +13,7 @@ public class InputProducer {
 		Graph graph = new Graph();
 		
 		for (int index = 0; index < graph.vertexAmount(); index++) {
-			String value = graph.getVertexWeights(index);
+			String value = String.valueOf(index);
 
 			final ProducerRecord<String, String> record;
 			record = new ProducerRecord<String, String>(KafkaConstants.INPUT_TOPIC, value);

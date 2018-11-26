@@ -16,7 +16,7 @@ public class InputConsumer {
 		Producer<String, String> producerOutput = PropertiesCreator.createProducer();
 		
 		Graph graph = new Graph();
-		TravellingSalesman salesman = new TravellingSalesman(graph.getWeights());
+		TravellingSalesman salesman;
 		
 		while (true) {
 			final ConsumerRecords<String, String> consumerRecords = consumer.poll(1000);
@@ -25,21 +25,39 @@ public class InputConsumer {
 				break;
 			
 			for (ConsumerRecord<String, String> record : consumerRecords) {
+				salesman = new TravellingSalesman(graph.getWeights());
 				
-				// TODO - processamento do grafo sera feito aqui
-				// String result = ProcessVertex.Double(record.value());
+				int startPoint = Integer.parseInt(record.value());
+				salesman.findShortestPath(startPoint);
+				int[] route = salesman.getRoute();
+				String result = graph.convertToString(route);
 				
-				
-				System.out.print(name + " is processing vertex " + record.value());
+				System.out.println(name + " is processing vertex " + record.value());
 				
 				final ProducerRecord<String, String> newRecord;
-				newRecord = new ProducerRecord<String, String>(KafkaConstants.OUTPUT_TOPIC, "Vertex " + record.value() + " | Result " + "not yet");
-				producerOutput.send(newRecord);		
-				System.out.println(" | Result of " + record.value() + " was sent to output topic");
+				newRecord = new ProducerRecord<String, String>(KafkaConstants.OUTPUT_TOPIC, "Route for " + record.value() + ": " + result);
+				producerOutput.send(newRecord);			
 			}
 		}
 		consumer.close();
 		producerOutput.close();
 		System.out.println("All records from INPUT_TOPIC were read");
-	}	
+	}
+	
+	public void clearProducer(String name) {
+		Consumer<String, String> consumer = PropertiesCreator.createConsumer(KafkaConstants.INPUT_TOPIC);
+		
+		while (true) {
+			final ConsumerRecords<String, String> consumerRecords = consumer.poll(1000);
+				
+			if (consumerRecords.count() == 0)
+				break;
+			
+			for (ConsumerRecord<String, String> record : consumerRecords) {
+				System.out.println(name + " is processing vertex " + record.value());
+			}
+		}
+		consumer.close();
+		System.out.println("All records from INPUT_TOPIC were read");
+	}
 }
