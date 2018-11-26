@@ -6,5 +6,5 @@ public class ProcessVertex {
 		int v = Integer.parseInt(vertex);
 		return String.valueOf(v * 2);
 	}
-	
+
 }

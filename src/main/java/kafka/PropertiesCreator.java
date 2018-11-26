@@ -1,4 +1,4 @@
-package example_update2;
+package kafka;
 
 import java.util.Collections;
 import java.util.Properties;

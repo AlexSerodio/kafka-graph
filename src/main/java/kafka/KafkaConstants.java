@@ -1,4 +1,4 @@
-package example_update2;
+package kafka;
 
 public abstract class KafkaConstants {
 	
