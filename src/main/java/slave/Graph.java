@@ -1,8 +1,8 @@
-package travelling_salesman;
+package slave;
 
 public class Graph {
 
-	private int [][] weights = new int[][] {
+	private int [][] costs = new int[][] {
 		{ 0, 86, 66, 69, 51, 89, 82, 46, 50, 8, 96, 15, 54, 60, 23 },
 		{ 12, 0, 58, 71, 67, 31, 93,  8, 76, 6, 43, 97, 78, 72, 66 },
 		{ 98, 93, 0, 91, 88, 0, 26, 49, 21, 40, 77, 83, 93, 11, 39 },
@@ -19,34 +19,9 @@ public class Graph {
 		{ 40, 65, 62, 97, 92, 18, 73, 57, 16, 57, 12, 10, 1, 0, 7 },
 		{ 39, 38, 83, 25, 87, 97, 15, 66, 69, 14, 9, 15, 87, 99, 0 }
 	};
-	
-	public int vertexAmount() {
-		return weights.length;
-	}
 		
-	public int[][] getWeights() {
-		return weights;
-	}
-	
-	public String printWeights() {
-		StringBuilder content = new StringBuilder();
-		for(int i = 0; i < weights.length; i++) {
-			for(int j = 0; j < weights.length; j++) {
-				content.append(weights[i][j]).append(", ");
-			}
-			content.append("\n");
-		}
-		return content.toString();
-	}
-	
-	public String getVertexWeights(int vertex) {
-		StringBuilder content = new StringBuilder();
-		for(int i = 0; i < weights.length; i++) {
-			if(i != 0)
-				content.append(", ");
-			content.append(weights[vertex][i]);
-		}
-		return content.toString();
+	public int[][] getCosts() {
+		return costs;
 	}
 	
 	public String convertToString(int[] vertex) {
@@ -57,17 +32,5 @@ public class Graph {
 			content.append(vertex[i]);
 		}
 		return content.toString();
-	}
-	
-	public int[] convertToArray(String vertex) {
-		String[] split = vertex.split(",");
-		
-		int[] newVertex = new int[split.length];
-		
-		for(int i = 0; i < newVertex.length; i++) {
-			newVertex[i] = Integer.parseInt(split[i].trim());
-		}
-		
-		return newVertex;
 	}
 }

@@ -1,4 +1,4 @@
-package kafka;
+package master;
 
 public abstract class KafkaConstants {
 	
@@ -9,9 +9,7 @@ public abstract class KafkaConstants {
 	public static final String GROUP_ID_CONFIG = "streams-wordcount";
 	public static final boolean ENABLE_AUTO_COMMIT = true;
 	public static final Integer AUTO_COMMIT_INTERVALS = 100;
-	public static final String OFFSET_RESET_LATEST = "latest";
 	public static final String OFFSET_RESET_EARLIER = "earliest";
-	public static final Integer MAX_NO_MESSAGE_FOUND_COUNT = 100;
 	public static final Integer MAX_POLL_RECORDS = 1;
 	
 }

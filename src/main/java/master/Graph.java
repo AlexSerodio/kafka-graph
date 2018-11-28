@@ -1,11 +1,11 @@
-package producer;
+package master;
 
 public class Graph {
 
-	private int[] shortestRoute;
+	private int[] shortestPath;
 	private int lowestCost = Integer.MAX_VALUE;
 	
-	private int [][] weights = new int[][] {
+	private int [][] costs = new int[][] {
 		{ 0, 86, 66, 69, 51, 89, 82, 46, 50, 8, 96, 15, 54, 60, 23 },
 		{ 12, 0, 58, 71, 67, 31, 93,  8, 76, 6, 43, 97, 78, 72, 66 },
 		{ 98, 93, 0, 91, 88, 0, 26, 49, 21, 40, 77, 83, 93, 11, 39 },
@@ -23,16 +23,16 @@ public class Graph {
 		{ 39, 38, 83, 25, 87, 97, 15, 66, 69, 14, 9, 15, 87, 99, 0 }
 	};
 		
-	public int[][] getWeights() {
-		return weights;
+	public int[][] getCosts() {
+		return costs;
 	}
 	
 	public int getLowerCost() {
 		return lowestCost;
 	}
 	
-	public int[] getShortestRoute() {
-		return shortestRoute;
+	public int[] getShortestPath() {
+		return shortestPath;
 	}
 	
 	public String convertToString(int[] vertex) {
@@ -56,21 +56,20 @@ public class Graph {
 		return newVertex;
 	}
 	
-	public int getTotalCost(int[] route) {
+	public int getTotalCost(int[] path) {
 		int totalCost = 0;
-		for(int i = 0; i < route.length-1; i++) {
-			totalCost += weights[route[i]][route[i+1]];
-			//System.out.println(route[i] + ", " + route[i+1] + " = " + weights[route[i]][route[i+1]] + " | " + totalCost);
+		for(int i = 0; i < path.length-1; i++) {
+			totalCost += costs[path[i]][path[i+1]];
 		}
 		return totalCost;
 	}
 	
-	public void calculateShortestRoute(int[] route) {
-		int totalCost = getTotalCost(route);
+	public void calculateShortestRoute(int[] path) {
+		int totalCost = getTotalCost(path);
 		
 		if (isLower(totalCost)) {
 			lowestCost = totalCost;
-			shortestRoute = route;
+			shortestPath = path;
 		}
 	}
 	
