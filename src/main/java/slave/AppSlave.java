@@ -1,7 +1,5 @@
 package slave;
 
-import master.KafkaConstants;
-
 public final class AppSlave {
 	
 	public static void main(final String[] args) {

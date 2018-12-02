@@ -1,8 +1,10 @@
 package slave;
 
 public class Graph {
-
-	private int [][] costs1 = new int[][] {
+	
+	private final int VERTEX_COUNT = 15;
+	
+	private int [][] costs = new int[][] {
 		{ 0, 86, 66, 69, 51, 89, 82, 46, 50, 8, 96, 15, 54, 60, 23 },
 		{ 12, 0, 58, 71, 67, 31, 93,  8, 76, 6, 43, 97, 78, 72, 66 },
 		{ 98, 93, 0, 91, 88, 0, 26, 49, 21, 40, 77, 83, 93, 11, 39 },
@@ -20,16 +22,20 @@ public class Graph {
 		{ 39, 38, 83, 25, 87, 97, 15, 66, 69, 14, 9, 15, 87, 99, 0 }
 	};
 		
-	private int [][] costs = new int[][] {
+	/*private int [][] costs = new int[][] {
 		{ 0, 185, 119, 152, 133 },
 		{ 185, 0, 121, 150, 200 },
 		{ 119, 121, 0, 174, 120 },
 		{ 152, 150, 174, 0, 199 },
 		{ 133, 200, 120, 199, 0 }
-	};
+	};*/
 	
 	public int[][] getCosts() {
 		return costs;
+	}
+	
+	public int getVertexCount() {
+		return VERTEX_COUNT;
 	}
 	
 	public String convertToString(int[] vertex) {

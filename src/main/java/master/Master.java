@@ -13,7 +13,6 @@ public class Master {
 
 	private int delay;
 	private final String BROKER_ADDRESS;
-	private final int VERTEX_COUNT = 5;
 	
 	private Graph graph = new Graph();
 	ArrayList<Integer> vertex = new ArrayList<>();
@@ -28,7 +27,7 @@ public class Master {
 		producer = PropertiesCreator.createProducer(BROKER_ADDRESS);
 		consumer = PropertiesCreator.createConsumer(KafkaConstants.OUTPUT_TOPIC, BROKER_ADDRESS);
 		
-		for(int i =0; i < VERTEX_COUNT; i++)
+		for(int i =0; i < graph.getVertexCount(); i++)
 			vertex.add(i);
 	}
 	
@@ -41,7 +40,7 @@ public class Master {
 		public void run(){			
 			Random rand = new Random();
 			
-			for (int index = 0; index < VERTEX_COUNT; index++) {
+			for (int index = 0; index < graph.getVertexCount(); index++) {
 				String value = String.valueOf(vertex.remove(rand.nextInt(vertex.size())));
 
 				final ProducerRecord<String, String> record;

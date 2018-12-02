@@ -2,6 +2,7 @@ package slave;
 
 public abstract class KafkaConstants {
 	
+	public static final String KAFKA_BROKERS = "localhost:9092";
 	public static final String CLIENT_ID = "client1";
 	public static final String GROUP_ID_CONFIG = "streams-wordcount";
 	public static final boolean ENABLE_AUTO_COMMIT = true;
